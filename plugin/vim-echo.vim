@@ -6,6 +6,10 @@
 nnoremap <silent> <Plug>(vim-echo-ze) :call EchoInsertBelow()<CR>
 nmap ze <Plug>(vim-echo-ze)
 
+" calling  expand('<sfile>') gives the name of the enclosing function, so we
+" have to do it in advance
+let s:script_dir_path = expand('<sfile>:p:h').'/flash.py'
+
 function! EchoStandardSanitizeLine(line)
 	let line = substitute(a:line, "\\", "\\\\", 'g')
 	let line = substitute(a:line, "\"", "\\\"", 'g')	
@@ -34,7 +38,7 @@ endfunction
 function! EchoLoadFiletype()
 	let path = expand('<sfile>:p:h').'/filetypes/'.&filetype.'.vim'
 	if filereadable(path)
-		exec 'source '.expand('<sfile>:p:h').'/filetypes/cpp.vim'
+		exec 'source '.s:script_dir_path.'/filetypes/cpp.vim'
 	endif
 endfunction
 
