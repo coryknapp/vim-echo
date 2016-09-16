@@ -8,7 +8,7 @@ nmap ze <Plug>(vim-echo-ze)
 
 " calling  expand('<sfile>') gives the name of the enclosing function, so we
 " have to do it in advance
-let s:ft_path = expand('<sfile>:p:h').'/filetypes/cpp.vim'
+let s:ft_dir_path = expand('<sfile>:p:h').'/filetypes/'
 
 function! EchoStandardSanitizeLine(line)
 	let line = substitute(a:line, "\\", "\\\\", 'g')
@@ -36,8 +36,9 @@ function! EchoInsertAbove()
 endfunction
 
 function! EchoLoadFiletype()
-	if filereadable(s:ft_path)
-		exec 'source '.s:ft_path
+	let path = s:ft_dir_path.&filetype.'.vim'
+	if filereadable(path)
+		exec 'source '.path
 	endif
 endfunction
 
