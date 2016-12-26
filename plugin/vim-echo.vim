@@ -6,6 +6,9 @@
 nnoremap <silent> <Plug>(vim-echo-ze) :call EchoInsertBelow()<CR>
 nmap ze <Plug>(vim-echo-ze)
 
+nnoremap <silent> <Plug>(vim-echo-ze) :call EchoInsertAbove()<CR>
+nmap zE <Plug>(vim-echo-zE)
+
 " calling  expand('<sfile>') gives the name of the enclosing function, so we
 " have to do it in advance
 let s:ft_dir_path = expand('<sfile>:p:h').'/filetypes/'
