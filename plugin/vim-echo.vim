@@ -15,9 +15,9 @@ let s:ft_dir_path = expand('<sfile>:p:h').'/filetypes/'
 
 function! EchoStandardSanitizeLine(line)
 	" escape /'s
-	let line = substitute(a:line, "\\", "\\\\", 'g')
+	let line = substitute(a:line, '\', '\\', 'g')
 	" escape "'s
-	let line = substitute(line, "\"", "\\\"", 'g')	
+	let line = substitute(line, '"', '"', 'g')	
 	"strip leading and trailing whitespace
 	let line = substitute(line, '^\s*\(.\{-}\)\s*$', '\1', '')
 	return line
